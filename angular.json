@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "skreener"
+    }
+  },
+  "defaultProject": "skreener",
+  "cli": {
+    "analytics": "aafff4ea-50ad-4495-b71a-aa3c5d6eafac"
+  }
 }
