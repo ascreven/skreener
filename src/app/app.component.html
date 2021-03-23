@@ -4,7 +4,8 @@
     <div [hidden]="!o.isActivated" class="col-3">
       <router-outlet #o="outlet" name="sidemenu"></router-outlet>
     </div>
-    <div ngClass="o.isActivated ? 'col-9' : 'col-12'">
+    <!-- TODO: refactor -->
+    <div [ngClass]="{'col-9' : o.isActivated, 'col-12': !o.isActivated}">
       <router-outlet></router-outlet>
     </div>
   </div>
