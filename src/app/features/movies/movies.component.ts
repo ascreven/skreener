@@ -3,6 +3,7 @@ import { find } from 'lodash';
 import { MoviesService } from 'src/app/features/movies/movies.service';
 import { IGenre } from 'src/app/models/genres.model';
 import { Movie } from './movies.model';
+import { RouteConfigLoadEnd, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
