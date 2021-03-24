@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { SidebarComponent } from "src/app/layout/sidebar/sidebar.component";
+import { MovieFilterResolverService } from "./movie-filter-resolver.service";
 
 import { MoviesComponent } from "./movies.component";
 
@@ -12,8 +13,11 @@ const routes: Routes = [
   {
     path: '',
     outlet: 'sidemenu',
-    component: SidebarComponent
-}
+    component: SidebarComponent,
+    resolve: {
+      filters: MovieFilterResolverService
+    }
+  }
 ];
 
 @NgModule({
