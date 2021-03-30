@@ -1,24 +1,14 @@
 <div class="sidebar">
   <h3>Filters</h3>
-  {{filters | json}}
   <div *ngFor="let filter of filters">
-    <button click="dropdownToggle(filter)">{{filter.title}}</button>
-    <ul class="filter-list" *ngIf="filter.show">
-      <li *ngFor="let option of filter.options" class="filter-item">
-        <input type="checkbox" id="genres-{{option.id}}">
-        <label for="genres-{{option.id}}" class="filter-label">
-          {{option.name}}
+    <button (click)="dropdownToggle(filter)" class="btn btn-link">{{filter.title}}</button>
+    <ul class="list-group" *ngIf="filter.isVisible">
+      <li *ngFor="let option of filter.options" class="list-group-item">
+        <input type="checkbox" class="form-check-input" id="genres-{{option[filter.id]}}"/>
+        <label for="genres-{{option[filter.id]}}" class="filter-label">
+          {{option[filter.name]}}
         </label>
       </li>
     </ul>
   </div>
-  <!-- <a [routerLink]="" (Click)="dropdownToggle('watchProviders')">Watch Providers</a>
-  <ul class="filter-list hidden">
-    <li *ngFor="let filter of filters.watchProviders" class="filter-item">
-      <input type="checkbox" id="watchProviders-{{filter.provider_id}}">
-      <label for="watchProviders-{{filter.provider_id}}" class="filter-label">
-        {{filter.provider_name}}
-      </label>
-    </li>
-  </ul> -->
 </div>
