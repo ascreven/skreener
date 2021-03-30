@@ -11,7 +11,7 @@ import { IGenre } from 'src/app/models/genres.model';
 
 export class MoviesService {
   headers = {
-    headers: new HttpHeaders().set("Authorization", `Bearer ${environment.movieDbKey}`)
+    headers: new HttpHeaders().set("Authorization", `Bearer ${environment.movieDbAccessKey}`)
   };
 
   genres: IGenre[];
