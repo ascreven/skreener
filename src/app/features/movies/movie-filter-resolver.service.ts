@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
-import {
-  Router, Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-}                                 from '@angular/router';
+import { Resolve } from '@angular/router';
 import { Observable, of }  from 'rxjs';
 import { MoviesService } from 'src/app/features/movies/movies.service';
 import { IGenre } from 'src/app/models/genres.model';
-import WATCH_PROVIDERS from './../../data/watchproviders.mock';
+import WATCH_PROVIDERS from './../../data/watch-providers.mock';
 
 type IMovieFilters = {
   genres: IGenre[],
@@ -25,9 +21,8 @@ export class MovieFilterResolverService implements Resolve<any> {
   // }
   filters = [];
 
-  constructor(private ms: MoviesService, private router: Router) { }
-
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Observable<never> {
+  constructor(private ms: MoviesService) { }
+  resolve(): Observable<any> | Observable<never> {
     this.ms.getMovieGenres()
       .subscribe(response => {
         this.filters.push(response.genres);
