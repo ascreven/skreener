@@ -19,17 +19,18 @@ type IMovieFilters = {
 })
 export class MovieFilterResolverService implements Resolve<any> {
 
-  filters: IMovieFilters = {
-    genres: [],
-    watchProviders: WATCH_PROVIDERS
-  }
+  // filters: IMovieFilters = {
+  //   genres: [],
+  //   watchProviders: WATCH_PROVIDERS
+  // }
+  filters = [];
 
   constructor(private ms: MoviesService, private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Observable<never> {
     this.ms.getMovieGenres()
       .subscribe(response => {
-        this.filters.genres = response.genres;
+        this.filters.push(response.genres);
     });
     return of(this.filters);
   }
