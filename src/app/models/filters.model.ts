@@ -4,6 +4,7 @@ export class Filter {
     public title: string,
     public isVisible: boolean = true,
     public id: string = "id",
-    public name: string = "name") {}
+    public name: string = "name",
+    public selected: any[] = []) {}
 
 }

@@ -17,7 +17,8 @@ export class MovieFilterResolverService implements Resolve<any> {
       title: "Watch Providers",
       isVisible: true,
       name: "provider_name",
-      id: "provider_id"
+      id: "provider_id",
+      selected: []
     }
   ];
 
