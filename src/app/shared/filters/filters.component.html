@@ -1,0 +1,14 @@
+<div class="sidebar">
+  <h3>Filters</h3>
+  <div *ngFor="let filter of filters">
+    <button (click)="dropdownToggle(filter)" class="btn btn-link">{{filter.title}}</button>
+    <ul class="list-group" *ngIf="filter.isVisible">
+      <li *ngFor="let option of filter.options" class="list-group-item">
+        <input type="checkbox" class="form-check-input" id="genres-{{option[filter.id]}}" (change)="filterOptionToggle(filter, option[filter.id], filters)"/>
+        <label for="genres-{{option[filter.id]}}" class="filter-label">
+          {{option[filter.name]}}
+        </label>
+      </li>
+    </ul>
+  </div>
+</div>

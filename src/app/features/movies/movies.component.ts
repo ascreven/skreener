@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { find } from 'lodash';
 import { MoviesService } from 'src/app/features/movies/movies.service';
+import { Filter } from 'src/app/models/filters.model';
 import { IGenre } from 'src/app/models/genres.model';
 import { Movie } from './movies.model';
 
@@ -11,16 +13,25 @@ import { Movie } from './movies.model';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[];
+  filters: Filter[];
   genres: IGenre[];
 
-  constructor(private movieService: MoviesService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private movieService: MoviesService
+  ) {}
 
   ngOnInit(): void {
-    this.movieService.getMovies()
-      .subscribe(response => {
-        this.movies = response.results;
-        this.getMovieGenres();
-      })
+    this.filters = this.route.snapshot.data.filters;
+    this.getMovies();
+  }
+
+  getMovies(activeFilters?: any) {
+    this.movieService.getMovies(activeFilters).subscribe(response => {
+      console.log(response.results);
+      this.movies = response.results;
+      this.getMovieGenres();
+    })
   }
 
   getMovieGenres() {
