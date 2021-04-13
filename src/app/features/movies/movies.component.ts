@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { find } from 'lodash';
 import { MoviesService } from 'src/app/features/movies/movies.service';
-import { Filter } from 'src/app/models/filters.model';
+import { Filter } from 'src/app/shared/filters/filters.model';
 import { IGenre } from 'src/app/models/genres.model';
 import { Movie } from './movies.model';
 
@@ -23,7 +23,11 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.filters = this.route.snapshot.data.filters;
-    this.movieService.getMovies()
+    this.getMovies();
+  }
+
+  getMovies(filters?: number[]) {
+    this.movieService.getMovies(filters)
     .subscribe(response => {
       this.movies = response.results;
       this.getMovieGenres();

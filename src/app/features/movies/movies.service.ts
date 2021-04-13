@@ -18,7 +18,7 @@ export class MoviesService {
   constructor(private http: HttpClient) {}
 
   // TODO: add response type
-  getMovies(): Observable<any> {
+  getMovies(filters): Observable<any> {
     return this.http.get<any>(
       `${environment.movieDbUrl}/discover/movie/`, this.headers
     );

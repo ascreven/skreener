@@ -2,8 +2,9 @@ export class Filter {
   constructor(
     public options: any[],
     public title: string,
+    public id: string,
+    public optionId: string = "id",
     public isVisible: boolean = true,
-    public id: string = "id",
     public name: string = "name") {}
 
 }

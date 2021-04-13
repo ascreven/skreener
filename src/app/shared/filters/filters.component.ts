@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatListOption } from '@angular/material/list';
 
-import { Filter } from 'src/app/models/filters.model';
+import { Filter } from 'src/app/shared/filters/filters.model';
 
 @Component({
   selector: 'app-filters',
@@ -9,10 +10,18 @@ import { Filter } from 'src/app/models/filters.model';
 })
 export class FiltersComponent {
   @Input() filters: Filter[];
+  @Output() filtersChange = new EventEmitter();
+  activeFilters: any = {};
 
   constructor() { }
 
-  dropdownToggle(filter: any) {
-    filter.isVisible = !filter.isVisible;
+  handleSelectionChange(filterId:string, selectedOptions: MatListOption[]) {
+    setTimeout(() => {
+      this.activeFilters[filterId] = [];
+      selectedOptions.forEach(option => {
+        this.activeFilters[filterId].push(option.value)
+      });
+
+    }, 1000);
   }
 }
