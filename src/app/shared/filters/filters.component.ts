@@ -22,6 +22,6 @@ export class FiltersComponent {
         this.activeFilters[filterId].push(option.value)
       });
       this.filtersChange.emit(this.activeFilters)
-    }, 1000);
+    }, 250);
   }
 }
