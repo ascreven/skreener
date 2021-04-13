@@ -26,7 +26,7 @@ export class MoviesComponent implements OnInit {
     this.getMovies();
   }
 
-  getMovies(filters?: number[]) {
+  getMovies(filters?) {
     this.movieService.getMovies(filters)
     .subscribe(response => {
       this.movies = response.results;

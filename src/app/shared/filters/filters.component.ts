@@ -21,7 +21,7 @@ export class FiltersComponent {
       selectedOptions.forEach(option => {
         this.activeFilters[filterId].push(option.value)
       });
-
+      this.filtersChange.emit(this.activeFilters)
     }, 1000);
   }
 }

@@ -10,17 +10,18 @@ import { IGenre } from 'src/app/models/genres.model';
 })
 
 export class MoviesService {
-  headers = {
-    headers: new HttpHeaders().set("Authorization", `Bearer ${environment.movieDbAccessKey}`)
-  };
-
+  headers = new HttpHeaders().set("Authorization", `Bearer ${environment.movieDbAccessKey}`)
   genres: IGenre[];
   constructor(private http: HttpClient) {}
 
   // TODO: add response type
-  getMovies(filters): Observable<any> {
+  getMovies(filters?): Observable<any> {
+    const options = {
+      headers: this.headers,
+      params: {...filters, "watch_region": "US"}
+    }
     return this.http.get<any>(
-      `${environment.movieDbUrl}/discover/movie/`, this.headers
+      `${environment.movieDbUrl}/discover/movie/`, options
     );
   }
 
