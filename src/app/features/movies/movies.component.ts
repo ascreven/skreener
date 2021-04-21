@@ -14,7 +14,7 @@ import { Movie } from './movies.model';
 export class MoviesComponent implements OnInit {
   movies: Movie[];
   filters: Filter[];
-  genres: IGenre[];
+  genres: IGenre[] = [];
 
   constructor(
     private route: ActivatedRoute,

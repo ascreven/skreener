@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { MovieFilterResolverService } from "./movie-filter-resolver.service";
+import { MovieFiltersResolverService } from "./movie-filter-resolver.service";
 
 import { MoviesComponent } from "./movies.component";
 
@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: MoviesComponent,
     resolve: {
-      filters: MovieFilterResolverService,
+      filters: MovieFiltersResolverService,
     }
   },
 ];

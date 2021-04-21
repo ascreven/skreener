@@ -24,12 +24,16 @@ export class MovieFilterResolverService implements Resolve<any> {
 
   constructor(private ms: MoviesService) { }
   resolve(): Observable<any> | Observable<never> {
-    this.ms.getMovieGenres()
-      .subscribe((response) => {
-        const filter = new Filter(response.genres, "Genres", "with_genres")
+    const genreFilter = this.filters.find(
+      (filter) => filter.title === 'Genres'
+    );
+
+    if (!genreFilter) {
+      this.ms.getMovieGenres().subscribe((response) => {
+        const filter = new Filter(response.genres, 'Genres', 'with_genres');
         this.filters.push(filter);
-    });
+      });
+    }
     return of(this.filters);
   }
 }
-
