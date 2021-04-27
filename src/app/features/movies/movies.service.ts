@@ -29,7 +29,7 @@ export class MoviesService {
     const options = {
       headers: this.headers,
       params: {
-        "append_to_response": ['videos']
+        "append_to_response": 'videos'
       }
     }
     return this.http.get<any>(
