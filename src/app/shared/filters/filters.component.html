@@ -1,14 +1,14 @@
-<div class="sidebar">
-  <h3>Filters</h3>
-  <div *ngFor="let filter of filters">
-    <button (click)="dropdownToggle(filter)" class="btn btn-link">{{filter.title}}</button>
-    <ul class="list-group" *ngIf="filter.isVisible">
-      <li *ngFor="let option of filter.options" class="list-group-item">
-        <input type="checkbox" class="form-check-input" id="genres-{{option[filter.id]}}" (change)="filterOptionToggle(filter, option[filter.id], filters)"/>
-        <label for="genres-{{option[filter.id]}}" class="filter-label">
+<div *ngFor="let filter of filters; first as isFirst">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="isFirst">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{filter.title}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-selection-list #activeFilters (selectionChange)="handleSelectionChange(filter.id, activeFilters.selectedOptions.selected)">
+        <mat-list-option *ngFor="let option of filter.options" [value]="option[filter.optionId]">
           {{option[filter.name]}}
-        </label>
-      </li>
-    </ul>
-  </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

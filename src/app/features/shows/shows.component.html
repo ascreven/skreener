@@ -1,1 +1,21 @@
-<p>shows works!</p>
+<div class="row">
+  <div class="col-3">
+    <app-filters [filters]="filters" (filtersChange)="getShows($event)"></app-filters>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <div *ngFor="let show of shows" class="col-3">
+        <div class="card">
+          <img src="https://image.tmdb.org/t/p/original/{{show.poster_path}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{show.title}}</h5>
+            <p class="card-text">{{show.overview}}</p>
+          </div>
+          <div class="card-footer">
+            <span *ngFor="let genre of show.genres" class="badge badge-dark">{{genre.name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

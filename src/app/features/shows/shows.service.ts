@@ -6,28 +6,27 @@ import { environment } from '../../../environments/environment';
 import { IGenre } from 'src/app/models/genres.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-
-export class MoviesService {
+export class ShowsService {
   headers = new HttpHeaders().set("Authorization", `Bearer ${environment.movieDbAccessKey}`)
   genres: IGenre[];
   constructor(private http: HttpClient) {}
 
   // TODO: add response type
-  getMovies(filters?): Observable<any> {
+  getShows(filters?): Observable<any> {
     const options = {
       headers: this.headers,
       params: {...filters, "watch_region": "US"}
     }
     return this.http.get<any>(
-      `${environment.movieDbUrl}/discover/movie/`, options
+      `${environment.movieDbUrl}/discover/tv/`, options
     );
   }
 
-  getMovieGenres(): Observable<any> {
+  getShowGenres(): Observable<any> {
     return this.http.get<any>(
-      `${environment.movieDbUrl}/genre/movie/list?api_key=${environment.movieDbKey}`
+      `${environment.movieDbUrl}/genre/tv/list?api_key=${environment.movieDbKey}`
     )
   }
 }
