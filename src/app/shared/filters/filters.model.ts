@@ -6,5 +6,4 @@ export class Filter {
     public optionId: string = "id",
     public isVisible: boolean = true,
     public name: string = "name") {}
-
 }

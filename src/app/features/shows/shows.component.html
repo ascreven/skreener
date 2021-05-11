@@ -1,1 +1,8 @@
-<p>shows works!</p>
+<div class="row">
+  <div class="col-3">
+    <app-filters [filters]="filters" (filtersChange)="getShows($event)"></app-filters>
+  </div>
+  <div class="col-9">
+    <app-results #results></app-results>
+  </div>
+</div>

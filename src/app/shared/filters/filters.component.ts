@@ -24,4 +24,12 @@ export class FiltersComponent {
       this.filtersChange.emit(this.activeFilters)
     }, 250);
   }
+
+  filterOptionToggle(filter: any, id: any, filters: any) {
+    if(filter.selected.indexOf(id) !== -1) {
+      filter.selected.splice(filter.selected.indexOf(id), 1);
+    } else {
+      filter.selected.push(id);
+    }
+  }
 }
