@@ -25,6 +25,18 @@ export class MoviesService {
     );
   }
 
+  getMovie(id: any): Observable<any> {
+    const options = {
+      headers: this.headers,
+      params: {
+        "append_to_response": 'videos'
+      }
+    }
+    return this.http.get<any>(
+      `${environment.movieDbUrl}/movie/${id}`, options
+    )
+  }
+
   getMovieGenres(): Observable<any> {
     return this.http.get<any>(
       `${environment.movieDbUrl}/genre/movie/list?api_key=${environment.movieDbKey}`

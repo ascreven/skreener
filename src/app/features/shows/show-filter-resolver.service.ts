@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
 import { Observable, of }  from 'rxjs';
 
 import { ShowsService } from 'src/app/features/shows/shows.service';
