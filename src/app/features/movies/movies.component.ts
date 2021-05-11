@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { find } from 'lodash';
 import { MoviesService } from 'src/app/features/movies/movies.service';
@@ -10,8 +10,7 @@ import { ResultsComponent } from 'src/app/layout/results/results.component';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
   filters: Filter[];
