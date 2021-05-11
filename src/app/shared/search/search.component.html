@@ -1,6 +1,6 @@
 <div class="search">
-  <h2>skreener</h2>
-  <p>search</p>
+  <!-- <h2>skreener</h2>
+  <p>search</p> -->
   <input #searchQuery type="text" placeholder="Enter a movie, show, or person..." (keyup.enter)="update(searchQuery.value)"/>
   <button (click)="update(searchQuery.value)">search</button>
 </div>
@@ -11,7 +11,8 @@
         <div class="card">
           <img src="https://image.tmdb.org/t/p/original/{{media.poster_path}}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">{{media.title}}</h5>
+            <h5 *ngIf="media.media_type === 'movie'" class="card-title">{{media.title}}</h5>
+            <h5 *ngIf="media.media_type === 'tv'" class="card-title">{{media.name}}</h5>
             <p class="card-text">{{media.overview}}</p>
           </div>
           <div class="card-footer">

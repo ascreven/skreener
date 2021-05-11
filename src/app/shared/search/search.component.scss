@@ -1,0 +1,23 @@
+div.search {
+  margin: 20px;
+  text-align: right;
+  input {
+    width: 250px;
+  }
+  button {
+    margin-left: 5px;
+    background: white;
+    color: rgba(0,0,0,.54);
+    border: 2px solid;
+    border-radius: 15px; //2px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    &:hover {
+      background: #ff4081;
+      border-color: #ff4081;
+      color: white;
+    }
+  }
+}
