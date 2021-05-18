@@ -10,7 +10,6 @@ div.search {
     color: rgba(0,0,0,.54);
     border: 2px solid;
     border-radius: 15px; //2px;
-    cursor: pointer;
     display: inline-block;
     vertical-align: middle;
     box-sizing: border-box;
@@ -18,6 +17,11 @@ div.search {
       background: #ff4081;
       border-color: #ff4081;
       color: white;
+    }
+    &:disabled {
+      background: white;
+      border-color: rgba(0,0,0,.54);
+      color: rgba(0,0,0,.54);
     }
   }
 }

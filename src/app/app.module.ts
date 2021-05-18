@@ -9,10 +9,11 @@ import { SearchComponent } from './shared/search/search.component';
 import { RequestCache } from './http-interceptors/request-cache.service';
 import { CachingInterceptor } from './http-interceptors/CacheInterceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, SearchComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ReactiveFormsModule],
   providers: [
     RequestCache,
     { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }

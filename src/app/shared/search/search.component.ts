@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { find } from 'lodash';
 import { SearchService } from 'src/app/shared/search/search.service';
 import { ShowsService } from '../../features/shows/shows.service';
@@ -14,7 +15,9 @@ import { IGenre } from 'src/app/models/genres.model';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
+  searchForm = new FormGroup({
+    searchQuery: new FormControl('', Validators.required)
+  });
   query: string = '';
   results: any[];
   // movies: Movie[];
@@ -33,8 +36,8 @@ export class SearchComponent implements OnInit {
 
   }
 
-  update(value: string) {
-    this.query = value;
+  onSubmit() {
+    this.query = this.searchForm.get("searchQuery").value;
     if (this.query) {
       this.getResults();
     }
