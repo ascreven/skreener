@@ -15,5 +15,6 @@ export type Movie = {
   popularity: number;
   vote_count: number;
   video: boolean;
+  videos?: any;
   vote_average: number;
 };

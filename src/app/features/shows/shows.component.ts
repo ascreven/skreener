@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { find } from 'lodash';
 import { ShowsService } from 'src/app/features/shows/shows.service';
 import { Filter } from 'src/app/shared/filters/filters.model';
 import { IGenre } from 'src/app/models/genres.model';
 import { Show } from 'src/app/features/shows/shows.model';
+import { ResultsComponent } from 'src/app/layout/results/results.component';
 
 @Component({
   selector: 'app-shows',
@@ -12,9 +13,9 @@ import { Show } from 'src/app/features/shows/shows.model';
   styleUrls: ['./shows.component.scss']
 })
 export class ShowsComponent implements OnInit {
-  shows: Show[];
   filters: Filter[];
   genres: IGenre[];
+  @ViewChild("results") resultsRef: ResultsComponent;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +30,7 @@ export class ShowsComponent implements OnInit {
   getShows(filters?) {
     this.showsService.getShows(filters)
     .subscribe(response => {
-      this.shows = response.results;
+      this.resultsRef.results = response.results;
       this.getShowGenres();
     })
   }
@@ -38,7 +39,7 @@ export class ShowsComponent implements OnInit {
     this.showsService.getShowGenres()
       .subscribe(response => {
         this.genres = response.genres;
-        this.shows.forEach((show: Show) => {
+        this.resultsRef.results.forEach((show: Show) => {
           show.genres = [];
           show.genre_ids.forEach((id) => {
             const genre = find(this.genres, {id: id})
