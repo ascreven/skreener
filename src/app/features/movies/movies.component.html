@@ -1,8 +1,9 @@
-<div class="row">
-  <div class="col-3 movies__filters">
+<mat-sidenav-container>
+
+  <mat-sidenav opened mode="side">
     <app-filters [filters]="filters" (filtersChange)="getMovies($event)"></app-filters>
-  </div>
-  <div class="col-9">
+  </mat-sidenav>
+  <mat-sidenav-content>
     <app-results #results></app-results>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

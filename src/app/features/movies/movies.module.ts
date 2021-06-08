@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { MoviesComponent } from './movies.component';
 import { MoviesRoutingModule } from './movies.routing.module';
@@ -12,7 +13,8 @@ import { ResultsModule } from 'src/app/layout/results/results.module';
     CommonModule,
     MoviesRoutingModule,
     SharedModule,
-    ResultsModule
+    ResultsModule,
+    MatSidenavModule
   ],
   declarations: [
     MoviesComponent,
