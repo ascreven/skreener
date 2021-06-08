@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+
+.result {
+  &__card {
+    display: inline-block;
+    max-width: 30%;
+    margin: $spacing-default;
+  }
+
+  &__image {
+    object-fit: contain;
+    max-height: 250px;
+  }
+  &__content {
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
