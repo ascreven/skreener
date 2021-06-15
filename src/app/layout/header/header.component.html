@@ -13,7 +13,7 @@
           <a class="nav-link active" aria-current="page" routerLink="shows">Shows</a>
         </li>
       </ul>
-      <app-search class=""></app-search>
+      <app-search (searchEvent)="fetchResults($event)"></app-search>
     </div>
   </div>
 </nav>

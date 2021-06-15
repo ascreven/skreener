@@ -3,17 +3,24 @@ import { CommonModule } from '@angular/common';
 import {MatListModule} from '@angular/material/list';
 
 import { FiltersComponent } from './filters/filters.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { SearchComponent } from './search/search.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    FiltersComponent
+    FiltersComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ReactiveFormsModule
   ],
-  exports: [FiltersComponent]
+  exports: [
+    FiltersComponent,
+    SearchComponent
+  ]
 })
 export class SharedModule { }

@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/shows/shows.module').then(m => m.ShowsModule)
   },
   {
+    path: 'search',
+    loadChildren: () => import('./features/search-results/search-results.module').then(m => m.SearchResultsModule)
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
